@@ -1,1 +1,24 @@
-spring.application.name=build_manager
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/buildmanager
+    username: postgres
+    password: postgres
+  jpa:
+    database: POSTGRESQL
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  servlet:
+    multpart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+# Production (down)
+---
+
+spring:
+  config:
+    activate:
+      on-profile: production
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_HOST}:5432/buildmanager
