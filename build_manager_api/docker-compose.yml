@@ -10,8 +10,8 @@ services:
       - '5432:5432'
     volumes:
       - ./data:/var/lib/postgresql/data
-    networks:
-      - buildmanagernetwork
+#    networks:
+#      - buildmanagernetwork
 
   pgadmin:
     image: dpage/pgadmin4
@@ -23,23 +23,23 @@ services:
       - '15432:80'
     depends_on:
       - db
-    networks:
-      - buildmanagernetwork
+#    networks:
+#      - buildmanagernetwork
 
-  sbootapp:
-    build:
-      dockerfile: Dockerfile
-    container_name: buildmanager
-    restart: on-failure
-    depends_on:
-      - db
-    ports:
-      - '8080:8080'
-    networks:
-      - buildmanagernetwork
-    environment:
-      - "POSTGRES_HOST=db"
-
-networks:
-  buildmanagernetwork:
-    driver: bridge
+#  sbootapp:
+#    build:
+#      dockerfile: Dockerfile
+#    container_name: buildmanager
+#    restart: on-failure
+#    depends_on:
+#      - db
+#    ports:
+#      - '8080:8080'
+#    networks:
+#      - buildmanagernetwork
+#    environment:
+#      - "POSTGRES_HOST=db"
+#
+#networks:
+#  buildmanagernetwork:
+#    driver: bridge
