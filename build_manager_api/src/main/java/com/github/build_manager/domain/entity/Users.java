@@ -11,9 +11,8 @@ import lombok.NoArgsConstructor;
 
 @MappedSuperclass
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@NoArgsConstructor
 public abstract class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
