@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-import java.time.Instant;
 import java.util.List;
 
 @Entity
@@ -14,25 +12,18 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Request implements Serializable {
-
+public class Build {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     @Column
-    private Instant datetime;
+    private String address;
 
     @Column
-    private Double value;
+    private String name;
 
-    @Column
-    private String description;
-
-    @ManyToMany(mappedBy = "requests")
-    private List<Operation> operator;
-
-    // ADICIONAR O ENUM COM A O TIPO DE SOLICITAÇÃO AQUI
-
+    @OneToMany(mappedBy = "build")
+    private List<Manager> managers;
 
 }
