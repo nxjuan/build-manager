@@ -33,7 +33,8 @@ public class Presence implements Serializable {
     @Column
     private Duration duration_time_work;
 
-    @ManyToMany(mappedBy = "presences")
+    @ManyToOne
+    @JoinColumn(name = "operator_id")
     private List<Operation> operator;
 
 

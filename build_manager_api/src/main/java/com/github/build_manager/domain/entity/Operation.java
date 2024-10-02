@@ -18,23 +18,12 @@ public class Operation extends Users implements Serializable {
     @Column
     private String pix_key;
 
-    @ManyToMany
-    @JoinTable(
-            name = "operator_precences",
-            joinColumns = @JoinColumn(name = "operator_id"),
-            inverseJoinColumns = @JoinColumn(name = "precence_id")
-    )
+    @OneToMany(mappedBy = "operator", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Presence> presences; // Realizar mapeaemnto jpa com a entidade presence            REVISAR
 
-    @ManyToMany
-    @JoinTable(
-            name = "operator_requests",
-            joinColumns = @JoinColumn(name = "operator_id"),
-            inverseJoinColumns = @JoinColumn(name = "request_id")
-    )
-    private List<Request> requests; // Realizar mapeaemnto jpa com a entidade Request                   REVISAR
 
-    @ManyToMany(mappedBy = "operators")
+    @ManyToOne
+    @JoinColumn(name = "manager_id")
     private List<Manager> managers;
 
 

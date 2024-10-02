@@ -15,12 +15,11 @@ import java.util.List;
 @Data
 public class Manager extends Users implements Serializable {
 
-    @ManyToMany
-    @JoinTable(
-            name = "operator_manager",
-            joinColumns = @JoinColumn(name = "operator_id"),
-            inverseJoinColumns = @JoinColumn(name = "manager_id")
-    )
+    @OneToMany(mappedBy = "manager", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Operation> operators;
+
+    @ManyToOne
+    @JoinColumn(name = "build_id")
+    private Build build;
 
 }
