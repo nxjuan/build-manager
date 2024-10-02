@@ -35,7 +35,7 @@ public class Presence implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "operator_id")
-    private List<Operation> operator;
+    private Operation operator;
 
 
 }

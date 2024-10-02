@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 public class Manager extends Users implements Serializable {
 
-    @OneToMany(mappedBy = "manager", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "managers", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Operation> operators;
 
     @ManyToOne
