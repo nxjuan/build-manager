@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Builder
-public class Operation extends Users implements Serializable {
+public class Employee extends Users implements Serializable {
 
     @Column
     private String pix_key;
@@ -23,10 +23,8 @@ public class Operation extends Users implements Serializable {
     @OneToMany(mappedBy = "operator", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Presence> presences; // Realizar mapeaemnto jpa com a entidade presence            REVISAR
 
-
     @ManyToOne
-    @JoinColumn(name = "build_id")
-    private Build build;
-
+    @JoinColumn(name = "manager_id")
+    private Manager manager;
 
 }

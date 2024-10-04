@@ -10,7 +10,6 @@ import java.io.Serializable;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table
@@ -37,7 +36,7 @@ public class Presence implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "operator_id")
-    private Operation operator;
+    private Employee employee;
 
 
 }
