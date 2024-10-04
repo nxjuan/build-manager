@@ -17,9 +17,6 @@ import java.util.List;
 @Builder
 public class Manager extends Users implements Serializable {
 
-    @OneToMany(mappedBy = "managers", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Operation> operators;
-
     @ManyToOne
     @JoinColumn(name = "build_id")
     private Build build;

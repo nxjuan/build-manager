@@ -30,7 +30,4 @@ public abstract class Users implements Serializable {
     @Column
     private String password;
 
-    @Column
-    @Enumerated(EnumType.STRING)
-    private Position position;
 }

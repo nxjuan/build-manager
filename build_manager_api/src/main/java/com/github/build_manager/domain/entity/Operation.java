@@ -25,8 +25,8 @@ public class Operation extends Users implements Serializable {
 
 
     @ManyToOne
-    @JoinColumn(name = "manager_id")
-    private Manager managers;
+    @JoinColumn(name = "build_id")
+    private Build build;
 
 
 }
