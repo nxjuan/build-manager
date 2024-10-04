@@ -20,7 +20,7 @@ public class Employee extends Users implements Serializable {
     @Column
     private String pix_key;
 
-    @OneToMany(mappedBy = "operator", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Presence> presences; // Realizar mapeaemnto jpa com a entidade presence            REVISAR
 
     @ManyToOne

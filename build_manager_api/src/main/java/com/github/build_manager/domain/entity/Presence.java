@@ -35,8 +35,7 @@ public class Presence implements Serializable {
     private Duration duration_time_work;
 
     @ManyToOne
-    @JoinColumn(name = "operator_id")
+    @JoinColumn(name = "employee_id")
     private Employee employee;
-
 
 }
