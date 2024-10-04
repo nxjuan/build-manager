@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequestMapping("/v1/operation")
 @Slf4j
-public class OperationController {
+public class EmployeeController {
     @PostMapping
     public ResponseEntity save
             (
