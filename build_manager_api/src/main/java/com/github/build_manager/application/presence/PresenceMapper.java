@@ -3,9 +3,7 @@ package com.github.build_manager.application.presence;
 import com.github.build_manager.domain.entity.Presence;
 import org.springframework.stereotype.Component;
 
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
