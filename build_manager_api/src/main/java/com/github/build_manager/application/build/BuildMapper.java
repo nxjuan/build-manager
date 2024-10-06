@@ -1,7 +1,6 @@
 package com.github.build_manager.application.build;
 
 import com.github.build_manager.domain.entity.Build;
-import lombok.Data;
 import org.springframework.stereotype.Component;
 
 @Component

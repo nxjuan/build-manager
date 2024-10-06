@@ -1,14 +1,11 @@
 package com.github.build_manager.application.employee;
 
-import com.github.build_manager.domain.entity.Build;
 import com.github.build_manager.domain.entity.Employee;
 import com.github.build_manager.domain.service.EmployeeService;
-import com.github.build_manager.infra.repository.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/v1/employee")

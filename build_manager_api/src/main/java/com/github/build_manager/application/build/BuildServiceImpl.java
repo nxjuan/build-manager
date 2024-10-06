@@ -1,6 +1,6 @@
 package com.github.build_manager.application.build;
 
-import com.github.build_manager.domain.ResourceNotFoundException;
+import com.github.build_manager.domain.exceptions.ResourceNotFoundException;
 import com.github.build_manager.domain.entity.Build;
 import com.github.build_manager.domain.service.BuildService;
 import com.github.build_manager.infra.repository.BuildRepository;

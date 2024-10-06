@@ -1,16 +1,16 @@
 package com.github.build_manager.application.managers;
 
-import com.github.build_manager.application.employee.EmployeeDTO;
 import com.github.build_manager.application.employee.EmployeeMapper;
-import com.github.build_manager.domain.entity.Build;
-import com.github.build_manager.domain.entity.Employee;
 import com.github.build_manager.domain.entity.Manager;
 import com.github.build_manager.domain.service.EmployeeService;
 import com.github.build_manager.domain.service.ManagerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/v1/manager")

@@ -1,6 +1,6 @@
 package com.github.build_manager.application.employee;
 
-import com.github.build_manager.domain.ResourceNotFoundException;
+import com.github.build_manager.domain.exceptions.ResourceNotFoundException;
 import com.github.build_manager.domain.entity.Employee;
 import com.github.build_manager.domain.service.EmployeeService;
 import com.github.build_manager.infra.repository.EmployeeRepository;

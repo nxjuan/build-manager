@@ -1,6 +1,5 @@
 package com.github.build_manager.application.employee;
 
-import com.github.build_manager.domain.entity.Build;
 import com.github.build_manager.domain.entity.Employee;
 import org.springframework.stereotype.Component;
 
