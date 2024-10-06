@@ -1,4 +1,4 @@
-package com.github.build_manager.application.operation;
+package com.github.build_manager.application.employee;
 
 import com.github.build_manager.domain.entity.Employee;
 import com.github.build_manager.domain.service.EmployeeService;

@@ -1,6 +1,6 @@
-package com.github.build_manager.application.operation;
+package com.github.build_manager.application.employee;
 
-import com.github.build_manager.domain.entity.Manager;
+import com.github.build_manager.domain.entity.Build;
 import com.github.build_manager.domain.entity.Presence;
 import lombok.Data;
 
@@ -13,7 +13,7 @@ public class EmployeeDTO {
     private String email;
     private String pix_key;
     private List<Presence> presences;
-    private Manager manager;
+    private Build build;
     private String password;
 
 }
