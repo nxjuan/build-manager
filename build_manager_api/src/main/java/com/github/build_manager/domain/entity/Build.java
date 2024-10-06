@@ -28,5 +28,7 @@ public class Build {
     @OneToMany(mappedBy = "build")
     private List<Manager> managers;
 
+    @OneToMany(mappedBy = "build", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Employee> employees;
 
 }

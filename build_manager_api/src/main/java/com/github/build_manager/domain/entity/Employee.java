@@ -5,16 +5,17 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Builder
 public class Employee extends Users implements Serializable {
 
     @Column
@@ -24,7 +25,7 @@ public class Employee extends Users implements Serializable {
     private List<Presence> presences; // Realizar mapeaemnto jpa com a entidade presence            REVISAR
 
     @ManyToOne
-    @JoinColumn(name = "manager_id")
-    private Manager manager;
+    @JoinColumn(name = "build_id")
+    private Build build;
 
 }
