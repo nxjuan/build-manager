@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/v1/employee")
 @RequiredArgsConstructor
@@ -32,6 +34,12 @@ public class EmployeeController {
         Employee updatedEmployee = employeeService.update(employeeToUpdate);
 
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/getAllByBuild/{build_id}")
+    public ResponseEntity<List<Employee>> findAllByBuildId(@PathVariable String build_id) {
+        List<Employee> employees = employeeService.findAllByBuildId(build_id);
+        return ResponseEntity.ok(employees);
     }
 
 
