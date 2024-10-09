@@ -1,8 +1,10 @@
 package com.github.build_manager.application.presence;
 
+import com.github.build_manager.domain.entity.Employee;
 import com.github.build_manager.domain.entity.Presence;
 import com.github.build_manager.domain.exceptions.ResourceNotFoundException;
 import com.github.build_manager.domain.service.PresenceService;
+import com.github.build_manager.infra.repository.EmployeeRepository;
 import com.github.build_manager.infra.repository.PresenceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,7 @@ import java.util.Optional;
 public class PresenceServiceImpl implements PresenceService {
 
     private final PresenceRepository presenceRepository;
+    private final EmployeeRepository employeeRepository;
     @Override
     @Transactional
     public Presence save(Presence presence) {
@@ -59,12 +62,12 @@ public class PresenceServiceImpl implements PresenceService {
 
     @Override
     public List<Presence> findAllByEmployeeId(String employee_id) {
-        Optional<Presence> existingPresence = presenceRepository.findById(employee_id);
-        if (existingPresence.isPresent()){
+        Optional<Employee> existingEmployee = employeeRepository.findById(employee_id);
+        if (existingEmployee.isPresent()){
             return presenceRepository.findAllByEmployeeId(employee_id);
         }
         else {
-            throw new ResourceNotFoundException("Build not found with ID: " + employee_id);
+            throw new ResourceNotFoundException("Employee not found with ID: " + employee_id);
         }
 
     }

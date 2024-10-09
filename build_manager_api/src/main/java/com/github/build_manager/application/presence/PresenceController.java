@@ -34,7 +34,7 @@ public class PresenceController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/getAllByEmployeeId/{employee_id")
+    @GetMapping("/getAllByEmployeeId/{employee_id}")
     public ResponseEntity<List<Presence>> findAllByEmployeeId(@PathVariable String employee_id){
         List<Presence> presences = presenceService.findAllByEmployeeId(employee_id);
         return ResponseEntity.ok(presences);
