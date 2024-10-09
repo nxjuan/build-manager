@@ -34,6 +34,12 @@ public class PresenceServiceImpl implements PresenceService {
             updatePresence.setStart_time_work(presence.getStart_time_work());
             updatePresence.setEnd_time_work(presence.getEnd_time_work());
 
+            if (presence.getEmployee() != null && presence.getEmployee().getId() != null) {
+                updatePresence.setEmployee(presence.getEmployee());
+            }else{
+                throw new ResourceNotFoundException("Employee not found with ID: " + presence.getEmployee());
+            }
+
             // Verifica se start_time_work e end_time_work não são null
             if (presence.getStart_time_work() != null && presence.getEnd_time_work() != null) {
                 Duration duration = Duration.between(
