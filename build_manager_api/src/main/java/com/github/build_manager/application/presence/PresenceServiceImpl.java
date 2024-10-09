@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -33,15 +34,32 @@ public class PresenceServiceImpl implements PresenceService {
             updatePresence.setStart_time_work(presence.getStart_time_work());
             updatePresence.setEnd_time_work(presence.getEnd_time_work());
 
-            Duration duration = Duration.between(
-                    presence.getStart_time_work(),
-                    presence.getEnd_time_work()
-            );
+            // Verifica se start_time_work e end_time_work não são null
+            if (presence.getStart_time_work() != null && presence.getEnd_time_work() != null) {
+                Duration duration = Duration.between(
+                        presence.getStart_time_work(),
+                        presence.getEnd_time_work()
+                );
+                updatePresence.setDuration_time_work(duration);
+            } else {
+                updatePresence.setDuration_time_work(null); // ou um valor padrão, dependendo do que você deseja fazer
+            }
 
-            updatePresence.setDuration_time_work(duration);
             return presenceRepository.save((updatePresence));
         } else {
             throw new ResourceNotFoundException("Presence not found with ID: " + presence.getId());
         }
+    }
+
+    @Override
+    public List<Presence> findAllByEmployeeId(String employee_id) {
+        Optional<Presence> existingPresence = presenceRepository.findById(employee_id);
+        if (existingPresence.isPresent()){
+            return presenceRepository.findAllByEmployeeId(employee_id);
+        }
+        else {
+            throw new ResourceNotFoundException("Build not found with ID: " + employee_id);
+        }
+
     }
 }
