@@ -1,5 +1,6 @@
 package com.github.build_manager.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,6 +26,7 @@ public class Employee extends Users implements Serializable {
     private List<Presence> presences; // Realizar mapeaemnto jpa com a entidade presence            REVISAR
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "build_id")
     private Build build;
 
