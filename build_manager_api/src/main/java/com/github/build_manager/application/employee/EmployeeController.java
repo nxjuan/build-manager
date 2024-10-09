@@ -26,10 +26,8 @@ public class EmployeeController {
 
     @PutMapping("/{emp_id}")
     public ResponseEntity<EmployeeDTO> update(@PathVariable String emp_id, @RequestBody EmployeeDTO dto){
-        String employeeId = String.valueOf(emp_id);
-
         Employee employeeToUpdate = employeeMapper.mapToEmployee(dto);
-        employeeToUpdate.setId(employeeId);
+        employeeToUpdate.setId(emp_id);
 
         Employee updatedEmployee = employeeService.update(employeeToUpdate);
 

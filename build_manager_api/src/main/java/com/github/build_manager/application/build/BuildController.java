@@ -24,10 +24,8 @@ public class BuildController {
 
     @PutMapping("/{build_id}")
     public ResponseEntity<BuildDTO> update(@PathVariable String build_id, @RequestBody BuildDTO dto){
-        String buildId = String.valueOf(build_id);
-
         Build buildToUpdate = buildMapper.mapToBuild(dto);
-        buildToUpdate.setId(buildId);
+        buildToUpdate.setId(build_id);
 
         Build updatedBuild = buildService.update(buildToUpdate);
 

@@ -26,10 +26,8 @@ public class ManagerController {
 
     @PutMapping("/{manager_id}")
     public ResponseEntity<ManagerDTO> update(@PathVariable String manager_id, @RequestBody ManagerDTO dto){
-        String managerId = String.valueOf(manager_id);
-
         Manager managerToUpdate = managerMapper.matToManager(dto);
-        managerToUpdate.setId(managerId);
+        managerToUpdate.setId(manager_id);
 
         Manager updatedManager = managerService.update(managerToUpdate);
 
