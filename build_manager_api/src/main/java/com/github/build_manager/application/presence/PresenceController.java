@@ -5,10 +5,7 @@ import com.github.build_manager.domain.service.PresenceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/v1/presence")
@@ -23,5 +20,15 @@ public class PresenceController {
         Presence presence = presenceMapper.mapToPresence(dto);
         presenceService.save(presence);
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @PutMapping("/{presence_id}")
+    public ResponseEntity<PresenceDTO> update(@PathVariable String presence_id, PresenceDTO dto){
+        Presence presenceToUpdate = presenceMapper.mapToPresence(dto);
+        presenceToUpdate.setId(presence_id);
+
+        Presence updatedPresence = presenceService.update(presenceToUpdate);
+
+        return ResponseEntity.ok().build();
     }
 }
