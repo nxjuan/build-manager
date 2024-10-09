@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/v1/presence")
 @RequiredArgsConstructor
@@ -23,7 +25,7 @@ public class PresenceController {
     }
 
     @PutMapping("/{presence_id}")
-    public ResponseEntity<PresenceDTO> update(@PathVariable String presence_id, PresenceDTO dto){
+    public ResponseEntity<PresenceDTO> update(@PathVariable String presence_id, @RequestBody PresenceDTO dto){
         Presence presenceToUpdate = presenceMapper.mapToPresence(dto);
         presenceToUpdate.setId(presence_id);
 
@@ -31,4 +33,5 @@ public class PresenceController {
 
         return ResponseEntity.ok().build();
     }
+
 }
