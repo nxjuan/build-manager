@@ -1,6 +1,7 @@
 package com.github.build_manager.application.presence;
 
 
+import com.github.build_manager.domain.entity.Employee;
 import lombok.Data;
 
 import java.time.Duration;
@@ -13,4 +14,5 @@ public class PresenceDTO {
     private Instant start_time_work;
     private Instant end_time_work;
     private Duration duration_time_work;
+    private Employee employee;
 }

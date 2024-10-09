@@ -16,6 +16,7 @@ public class PresenceMapper {
                 .start_time_work(dto.getStart_time_work())
                 .end_time_work(dto.getEnd_time_work())
                 .duration_time_work(dto.getDuration_time_work())
+                .employee(dto.getEmployee())
                 .build();
     }
 }
