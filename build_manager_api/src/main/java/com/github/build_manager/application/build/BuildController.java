@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/v1/build")
 @RequiredArgsConstructor
@@ -30,6 +32,11 @@ public class BuildController {
         Build updatedBuild = buildService.update(buildToUpdate);
 
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping()
+    public ResponseEntity<List<Build>> findAll(){
+        return ResponseEntity.ok(buildService.findAll());
     }
 
 }

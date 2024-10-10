@@ -7,6 +7,7 @@ import com.github.build_manager.infra.repository.BuildRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -33,5 +34,10 @@ public class BuildServiceImpl implements BuildService {
         } else {
             throw new ResourceNotFoundException("Build not found with ID: " + build.getId());
         }
+    }
+
+    @Override
+    public List<Build> findAll() {
+        return buildRepository.findAll();
     }
 }
