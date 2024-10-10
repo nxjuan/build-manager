@@ -40,4 +40,9 @@ public class PresenceController {
         return ResponseEntity.ok(presences);
     }
 
+    @GetMapping
+    public ResponseEntity<List<Presence>> findAll(){
+        return ResponseEntity.ok(presenceService.findAll());
+    }
+
 }

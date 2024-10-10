@@ -71,4 +71,9 @@ public class PresenceServiceImpl implements PresenceService {
         }
 
     }
+
+    @Override
+    public List<Presence> findAll() {
+        return presenceRepository.findAll();
+    }
 }

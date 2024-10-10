@@ -10,4 +10,6 @@ public interface PresenceService {
     Presence update (Presence presence);
 
     List<Presence> findAllByEmployeeId(String employee_id);
+
+    List<Presence> findAll();
 }
