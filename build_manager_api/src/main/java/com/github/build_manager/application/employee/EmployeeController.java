@@ -42,5 +42,9 @@ public class EmployeeController {
         return ResponseEntity.ok(employees);
     }
 
+    @GetMapping
+    public ResponseEntity<List<Employee>> findAll(){
+        return ResponseEntity.ok(employeeService.findAll());
+    }
 
 }

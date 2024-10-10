@@ -10,4 +10,6 @@ public interface EmployeeService {
     Employee update(Employee employee);
 
     List<Employee> findAllByBuildId(String build_id);
+
+    List<Employee> findAll();
 }

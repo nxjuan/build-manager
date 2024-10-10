@@ -54,4 +54,9 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new ResourceNotFoundException("Build not found with ID: " + build_id);
         }
     }
+
+    @Override
+    public List<Employee> findAll() {
+        return employeeRepository.findAll();
+    }
 }
