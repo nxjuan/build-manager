@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/v1/manager")
 @Slf4j //faz com que possamos usar o log
@@ -32,6 +34,11 @@ public class ManagerController {
         Manager updatedManager = managerService.update(managerToUpdate);
 
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Manager>> findAll(){
+        return ResponseEntity.ok(managerService.findAll());
     }
 
 }
