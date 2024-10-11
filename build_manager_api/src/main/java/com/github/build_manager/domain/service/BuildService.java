@@ -10,4 +10,6 @@ public interface BuildService {
     Build update(Build build);
 
     List<Build> findAll();
+
+    List<Build> findByNameLike(String query);
 }

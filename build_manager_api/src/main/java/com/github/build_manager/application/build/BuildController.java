@@ -34,9 +34,15 @@ public class BuildController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<Build>> findAll(){
         return ResponseEntity.ok(buildService.findAll());
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Build>> search(@RequestParam(value = "query", required = false) String query){
+        var result = buildService.findByNameLike(query);
+        return ResponseEntity.ok(result);
     }
 
 }

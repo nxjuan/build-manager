@@ -40,4 +40,9 @@ public class BuildServiceImpl implements BuildService {
     public List<Build> findAll() {
         return buildRepository.findAll();
     }
+
+    @Override
+    public List<Build> findByNameLike(String query) {
+        return buildRepository.findByNameLike(query);
+    }
 }
