@@ -1,13 +1,21 @@
 export function HeaderBar() {
     return (
-        <header>
-            <button className="relative inline-block px-6 py-3 border-2 border-white text-white uppercase font-semibold text-lg transition duration-300">
-                <a href="#" className="relative">
-                    <span className="relative z-10">HELLO !</span>
-                </a>
-                <div className="absolute inset-0 -top-0.5 -left-0.5 w-full h-full bg-gray-800 transition-transform duration-300 transform scale-y-100 before-effect"></div>
-                <div className="absolute inset-0 -top-0.5 -left-0.5 w-full h-full bg-gray-800 transition-transform duration-300 transform scale-y-100 after-effect"></div>
+    <header className="bg-gray-900 p-2 rounded-xl text-center">
+        <div className=" text-center">
+            
+            <button className="bg-gray-800 rounded-xl inline-block px-4 hover:bg-gray-500 hover:text-black">Build</button>
+            <button className="bg-gray-800 rounded-xl inline-block px-4 hover:bg-gray-500 hover:text-black ml-10">Employee</button>
+
+            <input type="text"
+                className="px-2 w-80 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ml-10" 
+                placeholder="Pesquisar..." 
+            />
+            <button 
+                type="submit" 
+                className="px-4 bg-gray-800 text-white font-semibold rounded-r-lg hover:bg-blue-600 transition">
+                Pesquisar
             </button>
-        </header>
+        </div>
+    </header>
     )
 }
