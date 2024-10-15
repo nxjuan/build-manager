@@ -7,7 +7,7 @@ export function HeaderBar() {
             <button className="bg-gray-800 rounded-xl inline-block px-4 hover:bg-gray-500 hover:text-black ml-10">Employee</button>
 
             <input type="text"
-                className="px-2 w-80 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ml-10" 
+                className="px-2 w-60 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ml-10" 
                 placeholder="Pesquisar..." 
             />
             <button 
