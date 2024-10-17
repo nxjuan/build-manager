@@ -45,4 +45,10 @@ public class BuildController {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/getById/{build_id}")
+    public ResponseEntity<Build> getById(@PathVariable String build_id ){
+        var result = buildService.getById(build_id);
+        return ResponseEntity.ok(result);
+    }
+
 }
