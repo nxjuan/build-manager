@@ -10,7 +10,7 @@ import Link from 'next/link';
 interface Employee {
   id: string;
   name: string;
-  position: string;
+  presences: any;
 }
 
 export default function BuildDetails() {
@@ -54,15 +54,20 @@ export default function BuildDetails() {
         <h1 className="text-2xl font-bold mb-4">{build.name}</h1>
         <p>Endereço: {build.address}</p>
       </div>
-
+      
       <div>
         {build.employees?.map((employee: Employee, index: number) => (
-          <div key={employee.id} className="p-2 bg-gray-600 mt-3 mb-3 rounded-xl">
-            <p><strong>ID:</strong> {employee.id}</p>
-            <p><strong>Nome:</strong> {employee.name}</p>
-          </div>
+
+          <Link href={`/employee/${employee.id}?buildId=${build.id}`}>
+            <div key={employee.id} className="p-2 bg-gray-600 mt-3 mb-3 rounded-xl hover:bg-gray-500">
+              <p><strong>Nome:</strong> {employee.name}</p>
+              <p><strong>N° presences:</strong> {Array.isArray(employee.presences) ? employee.presences.length : 0}</p>
+            </div>
+          </Link>
+
         ))}
-      </div>
+      </div>      
+
     </div>
   );
 }
