@@ -12,4 +12,6 @@ public interface EmployeeService {
     List<Employee> findAllByBuildId(String build_id);
 
     List<Employee> findAll();
+
+    Employee getById(String id);
 }
