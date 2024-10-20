@@ -47,7 +47,7 @@ public class BuildServiceImpl implements BuildService {
     }
 
     @Override
-    public Build getById(String id) {
+    public Build findById(String id) {
         return buildRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Build not found with ID: " + id));
     }

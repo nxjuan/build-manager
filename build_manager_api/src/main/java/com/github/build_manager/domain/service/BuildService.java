@@ -14,5 +14,5 @@ public interface BuildService {
 
     List<Build> findByNameLike(String query);
 
-    Build getById(String id);
+    Build findById(String id);
 }

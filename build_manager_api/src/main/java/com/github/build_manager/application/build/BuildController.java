@@ -46,9 +46,8 @@ public class BuildController {
     }
 
     @GetMapping("/getById/{build_id}")
-    public ResponseEntity<Build> getById(@PathVariable String build_id ){
-        var result = buildService.getById(build_id);
-        return ResponseEntity.ok(result);
+    public ResponseEntity<Build> fundById(@PathVariable String build_id ){
+        return ResponseEntity.ok(buildService.getById(build_id));
     }
 
 }
