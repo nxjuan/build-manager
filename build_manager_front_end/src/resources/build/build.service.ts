@@ -1,4 +1,3 @@
-// Definir o tipo dos dados que virão da API
 import {Build} from './build.resource'
 
 class BuildService {
@@ -13,12 +12,10 @@ class BuildService {
     };
 
     async findById(id: string) : Promise<Build> {
-        console.log(id)
         const response = await fetch(this.baseURL + '/getById/' + id)
         if (!response.ok) {
             throw new Error(`Erro ao buscar as builds: ${response.statusText}`);
         }
-        console.log(response)
         return await response.json(); 
     }
 }
