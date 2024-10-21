@@ -25,6 +25,9 @@ public class Build {
     @Column
     private String name;
 
+    @Column
+    private String color;
+
     @OneToMany(mappedBy = "build")
     private List<Manager> managers;
 
