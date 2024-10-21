@@ -15,5 +15,8 @@ public class EmployeeDTO {
     private List<Presence> presences;
     private Build build;
     private String password;
+    private Long hourly_rate;
+    private Long overtime_value;
+    private Long sunday_value;
 
 }

@@ -13,6 +13,9 @@ public class EmployeeMapper {
                 .password(dto.getPassword())
                 .presences(dto.getPresences())
                 .pix_key(dto.getPix_key())
+                .hourly_rate(dto.getHourly_rate())
+                .overtime_value(dto.getOvertime_value())
+                .sunday_value(dto.getSunday_value())
                 .build(dto.getBuild())
                 .build();
     }
