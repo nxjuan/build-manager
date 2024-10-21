@@ -7,5 +7,6 @@ public class BuildDTO {
 
     private String name;
     private String address;
+    private String color;
 
 }

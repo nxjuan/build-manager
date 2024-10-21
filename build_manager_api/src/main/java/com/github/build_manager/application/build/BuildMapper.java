@@ -10,6 +10,7 @@ public class BuildMapper {
         return Build.builder()
                 .name(dto.getName())
                 .address(dto.getAddress())
+                .color(dto.getColor())
                 .build();
     }
 
