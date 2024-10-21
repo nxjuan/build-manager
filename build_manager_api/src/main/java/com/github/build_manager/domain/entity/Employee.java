@@ -22,6 +22,15 @@ public class Employee extends Users implements Serializable {
     @Column
     private String pix_key;
 
+    @Column
+    private Long hourly_rate;
+
+    @Column
+    private Long overtime_value;
+
+    @Column
+    private Long sunday_value;
+
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Presence> presences; // Realizar mapeaemnto jpa com a entidade presence            REVISAR
 
