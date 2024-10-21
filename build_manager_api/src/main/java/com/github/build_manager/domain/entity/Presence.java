@@ -35,6 +35,9 @@ public class Presence implements Serializable {
     @Column
     private Duration duration_time_work;
 
+    @Column
+    private Boolean payed;
+
     @ManyToOne
     @JoinColumn(name = "employee_id")
     @JsonIgnore
