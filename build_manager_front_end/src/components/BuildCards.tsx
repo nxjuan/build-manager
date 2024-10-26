@@ -36,7 +36,7 @@ export default function BuildCard() {
                     </div>
                 </Link>
             ))}
-            <Link href=''>
+            <Link href='/new_build'>
                 <div
                     className='
                     bg-gray-300 w-full h-[300px] rounded-xl p-4 
