@@ -18,6 +18,23 @@ class BuildService {
         }
         return await response.json(); 
     }
+
+    async create(object: Record<string, any>): Promise<String> {
+        const response = await fetch(this.baseURL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(object),
+        });
+      
+        if (!response.ok) {
+          throw new Error(`Erro ao criar a build: ${response.statusText}`);
+        }
+      
+        return await response.json();
+    }
+
 }
 
 export const useBuildService = () => new BuildService();
