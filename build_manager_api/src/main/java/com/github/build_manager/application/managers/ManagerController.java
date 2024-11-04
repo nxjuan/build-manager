@@ -4,6 +4,7 @@ import com.github.build_manager.domain.entity.Manager;
 import com.github.build_manager.domain.service.ManagerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class ManagerController {
     public ResponseEntity save(@RequestBody ManagerDTO dto){
         Manager manager = managerMapper.matToManager(dto);
         managerService.save(manager);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/{manager_id}")

@@ -3,6 +3,7 @@ package com.github.build_manager.application.build;
 import com.github.build_manager.domain.entity.Build;
 import com.github.build_manager.domain.service.BuildService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class BuildController {
         Build build = buildMapper.mapToBuild(dto);
         buildService.save(build);
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/{build_id}")

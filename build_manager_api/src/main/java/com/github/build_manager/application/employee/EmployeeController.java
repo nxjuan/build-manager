@@ -4,6 +4,7 @@ import com.github.build_manager.domain.entity.Employee;
 import com.github.build_manager.domain.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class EmployeeController {
         Employee employee = employeeMapper.mapToEmployee(dto);
         employeeService.save(employee);
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/{emp_id}")
