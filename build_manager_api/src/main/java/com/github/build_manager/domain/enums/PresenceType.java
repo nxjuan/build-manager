@@ -1,4 +1,4 @@
-package com.github.build_manager.domain.entities;
+package com.github.build_manager.domain.enums;
 
 public enum PresenceType {
     EXPEDIENTE,
