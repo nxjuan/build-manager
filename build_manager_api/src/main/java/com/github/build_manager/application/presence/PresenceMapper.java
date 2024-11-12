@@ -17,6 +17,8 @@ public class PresenceMapper {
                 .end_time_work(dto.getEnd_time_work())
                 .duration_time_work(dto.getDuration_time_work())
                 .employee(dto.getEmployee())
+                .presence_type(dto.getPresence_type())
+                .payed(dto.isPayed())
                 .build();
     }
 }

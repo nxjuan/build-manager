@@ -23,6 +23,11 @@ public class PresenceServiceImpl implements PresenceService {
     @Override
     @Transactional
     public Presence save(Presence presence) {
+        presence.setPayed(false);
+        if (presence.getStart_time_work() != null && presence.getEnd_time_work() != null) {
+            Duration duration = Duration.between(presence.getStart_time_work(), presence.getEnd_time_work());
+            presence.setDuration_time_work(duration);
+        }
         return presenceRepository.save(presence);
     }
 

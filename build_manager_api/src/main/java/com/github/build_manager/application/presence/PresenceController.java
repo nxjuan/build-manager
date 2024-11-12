@@ -20,6 +20,7 @@ public class PresenceController {
     @PostMapping
     public ResponseEntity save(@RequestBody PresenceDTO dto){
         Presence presence = presenceMapper.mapToPresence(dto);
+
         presenceService.save(presence);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
