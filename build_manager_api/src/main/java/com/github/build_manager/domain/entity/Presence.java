@@ -1,6 +1,7 @@
 package com.github.build_manager.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.github.build_manager.domain.enums.PresenceType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -42,5 +43,9 @@ public class Presence implements Serializable {
     @JoinColumn(name = "employee_id")
     @JsonIgnore
     private Employee employee;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private PresenceType presence_type;
 
 }
