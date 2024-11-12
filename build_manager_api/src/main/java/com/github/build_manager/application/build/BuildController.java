@@ -25,7 +25,7 @@ public class BuildController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @PutMapping("/{build_id}")
+    @PutMapping("/update/{build_id}")
     public ResponseEntity<BuildDTO> update(@PathVariable String build_id, @RequestBody BuildDTO dto){
         Build buildToUpdate = buildMapper.mapToBuild(dto);
         buildToUpdate.setId(build_id);
