@@ -3,6 +3,7 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+/data
 
 ### STS ###
 .apt_generated
@@ -23,7 +24,6 @@ target/
 /nbproject/private/
 /nbbuild/
 /dist/
-/data/
 /nbdist/
 /.nb-gradle/
 build/
