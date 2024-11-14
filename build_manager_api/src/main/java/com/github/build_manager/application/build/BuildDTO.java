@@ -6,7 +6,9 @@ import lombok.Data;
 public class BuildDTO {
 
     private String name;
-    private String address;
+    private String cep;
+    private String city;
+    private String state;
     private String color;
 
 }

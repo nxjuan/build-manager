@@ -20,7 +20,13 @@ public class Build {
     private String id;
 
     @Column
-    private String address;
+    private String cep;
+
+    @Column
+    private String city;
+
+    @Column
+    private String state;
 
     @Column
     private String name;

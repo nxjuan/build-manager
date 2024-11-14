@@ -28,7 +28,9 @@ public class BuildServiceImpl implements BuildService {
             Build updatedBuild = existingBuild.get();
 
             updatedBuild.setName(build.getName());
-            updatedBuild.setAddress(build.getAddress());
+            updatedBuild.setCep(build.getCep());
+            updatedBuild.setCity(build.getCity());
+            updatedBuild.setState(build.getState());
             updatedBuild.setColor(build.getColor());
 
             return buildRepository.save(updatedBuild);

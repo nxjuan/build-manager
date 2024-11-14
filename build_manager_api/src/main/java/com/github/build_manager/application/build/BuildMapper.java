@@ -9,9 +9,9 @@ public class BuildMapper {
     public Build mapToBuild(BuildDTO dto){
         return Build.builder()
                 .name(dto.getName())
-                .address(dto.getAddress())
+                .cep(dto.getCep())
+                .city(dto.getCity())
                 .color(dto.getColor())
                 .build();
     }
-
 }
