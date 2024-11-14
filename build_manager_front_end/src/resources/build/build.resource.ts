@@ -1,6 +1,9 @@
 export class Build {
     name?: string;
-    address?: string;
+    cep?: string;
+    city?: string;
+    state?: string;
     employees?: any;
     id?: string;
+    color?: string
 }

@@ -35,6 +35,22 @@ class BuildService {
         return await response.json();
     }
 
+    async update(id: string, object: Record<string, any>): Promise<string> {
+      const response = await fetch(`${this.baseURL}/update/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(object),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Erro ao atualizar a build: ${response.statusText}`);
+      }
+  
+      return await response.json();
+    }
+
 }
 
 export const useBuildService = () => new BuildService();
