@@ -7,7 +7,6 @@ import { Build } from '@/resources/build/build.resource';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Employee } from '@/resources/employee/employee.resource';
-import QRCodePopUp from '@/components/QRCodePopUp';
 
 export default function BuildDetails() {
   const { id } = useParams();
@@ -50,7 +49,7 @@ export default function BuildDetails() {
 
       <div className='bg-gray-900 py-4 px-5 rounded-xl'>
         <h1 className="text-2xl font-bold mb-4">{build.name}</h1>
-        <p>Endereço: {build.address}</p>
+        <p>Endereço: {`${build.state}, ${build.city}`}</p>
       </div>
 
       <div className='cursor-pointer'>
@@ -96,14 +95,6 @@ export default function BuildDetails() {
           </div>
         ))}
       </div>
-
-      {/* Componente de Pop-up do QR Code */}
-      {showQrCodePopup?.visible && (
-        <QRCodePopUp
-          employeeId={showQrCodePopup.employeeId}
-          onClose={() => setShowQrCodePopup(null)}
-        />
-      )}
     </div>
   );
 }
