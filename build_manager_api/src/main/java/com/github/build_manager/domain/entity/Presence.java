@@ -34,7 +34,7 @@ public class Presence implements Serializable {
     private Instant end_time_work;
 
     @Column
-    private Duration duration_time_work;
+    private Long duration_time_work;
 
     @Column
     private Boolean payed;

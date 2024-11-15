@@ -14,7 +14,7 @@ public class PresenceDTO {
     private Date date;
     private Instant start_time_work;
     private Instant end_time_work;
-    private Duration duration_time_work;
+    private Long duration_time_work;
     private Employee employee;
     private PresenceType presence_type;
     private boolean payed;

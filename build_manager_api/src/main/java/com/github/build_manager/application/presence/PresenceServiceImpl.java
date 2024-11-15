@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,8 +26,8 @@ public class PresenceServiceImpl implements PresenceService {
     public Presence save(Presence presence) {
         presence.setPayed(false);
         if (presence.getStart_time_work() != null && presence.getEnd_time_work() != null) {
-            Duration duration = Duration.between(presence.getStart_time_work(), presence.getEnd_time_work());
-            presence.setDuration_time_work(duration);
+            Long durationInMinutes = Duration.between(presence.getStart_time_work(), presence.getEnd_time_work()).toMinutes();
+            presence.setDuration_time_work(durationInMinutes);
         }
         return presenceRepository.save(presence);
     }
@@ -48,13 +49,15 @@ public class PresenceServiceImpl implements PresenceService {
                 throw new ResourceNotFoundException("Employee not found with ID: " + presence.getEmployee());
             }
 
-            // Verifica se start_time_work e end_time_work não são null
+
             if (presence.getStart_time_work() != null && presence.getEnd_time_work() != null) {
-                Duration duration = Duration.between(
+                // Calculate duration in minutes as a long value
+                long durationInMinutes = ChronoUnit.MINUTES.between(
                         presence.getStart_time_work(),
                         presence.getEnd_time_work()
                 );
-                updatePresence.setDuration_time_work(duration);
+
+                updatePresence.setDuration_time_work(durationInMinutes);
             } else {
                 updatePresence.setDuration_time_work(null); // ou um valor padrão, dependendo do que você deseja fazer
             }
