@@ -17,6 +17,7 @@ export default function NewBuild() {
   const [hourly_rate, setHourly_rate] = useState('');
   const [sundays_value, setSundays_value] = useState('');
   const [overtime_value, setOvertime_value] = useState('');
+  const presences = null;
 
   // Função para lidar com a submissão do formulário
   const handleSubmit = async (event: React.FormEvent) => {
@@ -29,12 +30,11 @@ export default function NewBuild() {
     const payload = {
       name,
       email,
-      //phone,
       pix_key,
       build, // Adicionando o objeto Build diretamente
       hourly_rate: Number(hourly_rate),
       overtime_value: Number(overtime_value),
-      sunday_value: Number(sundays_value),
+      sunday_value: Number(sundays_value)
     };
 
     try {
@@ -89,15 +89,6 @@ export default function NewBuild() {
             onChange={(e) => setEmail(e.target.value)}
             className="w-[500px] text-gray-400 rounded-md block mb-4 pl-2 focus:text-gray-600"
             placeholder="jose@email.com"
-          />
-
-          <input
-            type="number"
-            required
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            className="w-[500px] text-gray-400 rounded-md block mb-4 pl-2 focus:text-gray-600"
-            placeholder="27 999999999"
           />
 
           <input
