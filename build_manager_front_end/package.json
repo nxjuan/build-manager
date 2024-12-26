@@ -13,6 +13,7 @@
     "formik": "^2.4.6",
     "next": "14.2.15",
     "pixbr": "^1.0.0",
+    "qrcode": "^1.5.4",
     "qrcode.react": "^4.1.0",
     "react": "^18",
     "react-dom": "^18",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/qrcode": "^1.5.5",
     "@types/qrcode.react": "^1.0.5",
     "@types/react": "^18",
     "@types/react-dom": "^18",
