@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -84,4 +85,16 @@ public class PresenceServiceImpl implements PresenceService {
     public List<Presence> findAll() {
         return presenceRepository.findAll();
     }
+
+    @Override
+    public List<Presence> payAllPresencesByEmployeeId(String employee_id) {
+        List<Presence> presencesList = findAllByEmployeeId(employee_id);
+
+        for (Presence presence : presencesList) {
+            presence.setPayed(true);
+        }
+
+        return presenceRepository.saveAll(presencesList);
+    }
+
 }

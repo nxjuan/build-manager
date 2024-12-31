@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface PresenceRepository extends JpaRepository<Presence, String> {
     List<Presence> findAllByEmployeeId(String employee_id);
+
 }

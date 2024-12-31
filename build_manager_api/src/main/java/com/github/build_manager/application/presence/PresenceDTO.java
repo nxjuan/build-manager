@@ -11,6 +11,7 @@ import java.util.Date;
 
 @Data
 public class PresenceDTO {
+    private String id;
     private Date date;
     private Instant start_time_work;
     private Instant end_time_work;

@@ -12,4 +12,6 @@ public interface PresenceService {
     List<Presence> findAllByEmployeeId(String employee_id);
 
     List<Presence> findAll();
+
+    List<Presence> payAllPresencesByEmployeeId(String presences);
 }

@@ -2,11 +2,13 @@ package com.github.build_manager.application.presence;
 
 import com.github.build_manager.domain.entity.Presence;
 import com.github.build_manager.domain.service.PresenceService;
+import com.github.build_manager.infra.repository.PresenceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -23,6 +25,12 @@ public class PresenceController {
 
         presenceService.save(presence);
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @PatchMapping("/payAllPresencesByEmployeeId/{employee_id}")
+    public ResponseEntity payAllPresencesByEmployeeId(@PathVariable String employee_id){
+        presenceService.payAllPresencesByEmployeeId(employee_id);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @PutMapping("/{presence_id}")
