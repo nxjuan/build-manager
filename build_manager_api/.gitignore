@@ -6,6 +6,7 @@ target/
 /data/
 data/
 data/**
+build_manager_api/data/
 
 ### STS ###
 .apt_generated
