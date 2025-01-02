@@ -28,9 +28,9 @@ public class PresenceController {
     }
 
     @PatchMapping("/payAllPresencesByEmployeeId/{employee_id}")
-    public ResponseEntity payAllPresencesByEmployeeId(@PathVariable String employee_id){
-        presenceService.payAllPresencesByEmployeeId(employee_id);
-        return ResponseEntity.status(HttpStatus.OK).build();
+    public ResponseEntity<Void> payAllPresencesByEmployeeId(@PathVariable String employee_id){
+        List<Presence> list =  presenceService.payAllPresencesByEmployeeId(employee_id);
+        return ResponseEntity.ok().build();
     }
 
     @PutMapping("/{presence_id}")
