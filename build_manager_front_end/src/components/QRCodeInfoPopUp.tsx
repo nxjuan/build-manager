@@ -2,6 +2,7 @@
 import { FC, useEffect, useState } from 'react';
 import QRCode from 'qrcode';
 import { Employee } from '@/resources/employee/employee.resource';
+import { usePresenceService } from '@/resources/presence/presence.service';
 
 interface QRCodePopUpProps {
     employee: Employee;
@@ -14,6 +15,8 @@ const QRCodePopUp: FC<QRCodePopUpProps> = ({ employee, onClose }) => {
     const [sundayHours, setSundayHours] = useState({ hours: '00:00', amount: 0 });
     const [pixCopiaCola, setPixCopiaCola] = useState('');
     const [qrCodeImage, setQrCodeImage] = useState('');
+
+    const presenceService = usePresenceService();
 
     const txid = 'bm1234'
     const pixKey = employee.pix_key || '';
@@ -80,38 +83,63 @@ const QRCodePopUp: FC<QRCodePopUpProps> = ({ employee, onClose }) => {
         workHours.amount + extraHours.amount + sundayHours.amount
     ).toFixed(2);
 
+    const markAllAsPaid = async () => {
+        if (!employee.id) {
+            console.error('ID do funcionário está ausente.');
+            alert('Erro: ID do funcionário não encontrado.');
+            return;
+        }
+    
+        const userConfirmed = window.confirm(
+            'Você tem certeza de que deseja marcar todas as presenças como pagas?'
+        );
+    
+        if (!userConfirmed) {
+            return;
+        }
+    
+        try {
+            await presenceService.payAllPresencesByEmployeeId(employee.id)
+        } catch (error) {
+            console.error('Erro ao marcar como pago:', error);
+            alert('Erro ao atualizar as presenças. Tente novamente.');
+        }
+    };
+    
+    
+
     useEffect(() => {
 
         const generatePix = async () => {
 
-            const ID_PAYLOAD_FORMAT_INDICATOR = '00'  + '02' + '01';
-            const ID_MERCHANT_ACCOUNT_INFORMATION = 
-                '26' + (pixKey.length + 22) 
-                + '0014br.gov.bcb.pix01' 
+            const ID_PAYLOAD_FORMAT_INDICATOR = '00' + '02' + '01';
+            const ID_MERCHANT_ACCOUNT_INFORMATION =
+                '26' + (pixKey.length + 22)
+                + '0014br.gov.bcb.pix01'
                 + pixKey.length
                 + pixKey;
             const ID_MERCHANT_CATEGORY_CODE = '52' + '04' + '0000';
             const ID_TRANSACTION_CURRENCY = '53' + '03' + '986';
-            const ID_TRANSACTION_AMOUNT = 
-                '54' 
+            const ID_TRANSACTION_AMOUNT =
+                '54'
                 + amount.length.toString().padStart(2, '0')
                 + amount;
             const ID_COUNTRY_CODE = '58' + '02' + 'BR';
-            const ID_MERCHANT_NAME = 
-                '59' 
+            const ID_MERCHANT_NAME =
+                '59'
                 + receiverName.length.toString().padStart(2, '0')
                 + receiverName;
-            const ID_MERCHANT_CITY = 
-                '60' 
+            const ID_MERCHANT_CITY =
+                '60'
                 + city.length.toString().padStart(2, '0')
                 + city;
             const ID_ADDITIONAL_DATA_FIELD_TEMPLATE = '62' + '07' + '05' + '03' + '***';
             const ID_CRC16 = '63' + '04';
 
-            const pixPayload = 
+            const pixPayload =
                 ID_PAYLOAD_FORMAT_INDICATOR
                 + ID_MERCHANT_ACCOUNT_INFORMATION
-                +ID_MERCHANT_CATEGORY_CODE
+                + ID_MERCHANT_CATEGORY_CODE
                 + ID_TRANSACTION_CURRENCY
                 + ID_TRANSACTION_AMOUNT
                 + ID_COUNTRY_CODE
@@ -168,7 +196,12 @@ const QRCodePopUp: FC<QRCodePopUpProps> = ({ employee, onClose }) => {
                 >
                     {pixCopiaCola}
                 </p>
-                <p className="text-sm text-center text-gray-500">(Clique para copiar)</p>
+                <button
+                    className="bg-green-500 text-white px-4 py-2 rounded mt-4 hover:bg-green-800"
+                    onClick={markAllAsPaid}
+                >
+                    Marcar Tudo como Pago
+                </button>
             </div>
         </div>
     );
