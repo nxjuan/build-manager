@@ -27,7 +27,7 @@ public class EmployeeController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @PutMapping("/{emp_id}")
+    @PutMapping("/update/{emp_id}")
     public ResponseEntity<EmployeeDTO> update(@PathVariable String emp_id, @RequestBody EmployeeDTO dto){
         Employee employeeToUpdate = employeeMapper.mapToEmployee(dto);
         employeeToUpdate.setId(emp_id);
