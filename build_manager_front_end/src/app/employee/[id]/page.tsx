@@ -7,16 +7,13 @@ import { useEmployeeService } from '@/resources/employee/employee.service';
 import { Employee } from '@/resources/employee/employee.resource';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Presence } from '@/resources/presence/presence.resource';
 
-interface Presence {
-    id: string;
-    date: string;
-    duration_time_work: string;
-    start_time_work: string;
-    end_time_work: string;
-}
 
 export default function BuildDetails() {
+
+  const [hoveredIconIndex, setHoveredIconIndex] = useState<number | null>(null);
+
   const { id } = useParams();
   const [employee, setemployee] = useState<Employee | null>(null);
   const [loading, setLoading] = useState(true);
@@ -25,10 +22,10 @@ export default function BuildDetails() {
   const buildId = searchParams.get('buildId');
 
   useEffect(() => {
-    if (id) { 
+    if (id) {
       const fetchEmployee = async () => {
         try {
-          const result: Employee = await useService.findById(id as string); 
+          const result: Employee = await useService.findById(id as string);
           setemployee(result);
         } catch (error) {
           console.error('Erro ao buscar os detalhes da build:', error);
@@ -49,10 +46,10 @@ export default function BuildDetails() {
 
       <div className="absolute top-4 left-4">
         <Link href={`/build/${buildId}`}>
-          
-            <Image src="/images/botao-voltar 1.png" alt="Botão Voltar" width={30} height={30} />
-          
-        </Link>       
+
+          <Image src="/images/botao-voltar 1.png" alt="Botão Voltar" width={30} height={30} />
+
+        </Link>
       </div>
 
       <div className='bg-gray-900 py-4 px-5 rounded-xl'>
@@ -60,20 +57,50 @@ export default function BuildDetails() {
         <p>Pix: {employee.pix_key}</p>
         <p>Presences: {Array.isArray(employee.presences) ? employee.presences.length : 0}</p>
       </div>
-      
+
+      <div className='cursor-pointer '>
+
+        <Link href={`/new_presence/${employee.id}?`}>
+          <div className="p-2 bg-gray-600 mt-3 mb-3 rounded-xl hover:bg-gray-500 flex items-center justify-center h-full">
+            <Image src='/images/botao-adicionar 1.png' alt='adicionar' width={30} height={30} className=''></Image>
+          </div>
+        </Link>
+
+      </div>
+
       <div>
-        {employee.presences?.map((presence: Presence, index: number) => (
+        {Array.isArray(employee.presences) && employee.presences.map((presence: Presence, index: number) => (
+          <div
+            key={presence.id}
+            className="p-2 bg-gray-600 mt-3 mb-3 rounded-xl hover:bg-gray-500 relative" // `relative` aqui define o contexto
+          >
+            <p><strong>Data:</strong> {presence.date ? new Date(presence.date).toLocaleDateString() : 'Data indisponível'}</p>
+            <p><strong>Start:</strong> {presence.start_time_work}</p>
+            <p><strong>End:</strong> {presence.end_time_work}</p>
 
-          
-            <div key={presence.id} className="p-2 bg-gray-600 mt-3 mb-3 rounded-xl hover:bg-gray-500">
-              <p><strong>Data:</strong> {presence.date}</p>
-              <p><strong>Start:</strong> {presence.start_time_work}</p>
-              <p><strong>End:</strong> {presence.end_time_work}</p>
+            <div className={`${!!presence.payed ? 'bg-green-500' : 'bg-yellow-400 '} text-gray-900 inline-flex px-2 rounded-md`}>
+              {`${!!presence.payed ? 'pago' : 'a pagar'}`}
             </div>
-          
 
+            {/* Botão de edição posicionado no canto superior direito */}
+            <div
+              className="absolute top-2 right-2" // `absolute` para posicionar o ícone
+              onMouseEnter={() => setHoveredIconIndex(index)}
+              onMouseLeave={() => setHoveredIconIndex(null)}
+            >
+              <Link href={`/edit_presence/${employee.id}`}>
+                <Image
+                  src={hoveredIconIndex === index ? "/images/botao-editar (1).png" : "/images/botao-editar.png"}
+                  alt="Botão Editar"
+                  width={30}
+                  height={30}
+                />
+              </Link>
+            </div>
+          </div>
         ))}
-      </div>      
+      </div>
+
 
     </div>
   );

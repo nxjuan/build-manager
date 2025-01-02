@@ -1,3 +1,4 @@
+// BuildDetails.tsx
 'use client';
 
 import { useParams } from 'next/navigation';
@@ -7,6 +8,7 @@ import { Build } from '@/resources/build/build.resource';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Employee } from '@/resources/employee/employee.resource';
+import QRCodeInfoPopup from '@/components/QRCodeInfoPopUp'; // Novo componente de pop-up
 
 export default function BuildDetails() {
   const { id } = useParams();
@@ -17,7 +19,7 @@ export default function BuildDetails() {
   // Estados de hover e pop-up
   const [hoveredEditIconIndex, setHoveredEditIconIndex] = useState<number | null>(null);
   const [hoveredQrIconIndex, setHoveredQrIconIndex] = useState<number | null>(null);
-  const [showQrCodePopup, setShowQrCodePopup] = useState<{ visible: boolean; employeeId: string | undefined } | null>(null);
+  const [showQrCodePopup, setShowQrCodePopup] = useState<{ visible: boolean; employee: Employee | null } | null>(null);
 
   useEffect(() => {
     if (id) {
@@ -31,7 +33,6 @@ export default function BuildDetails() {
           setLoading(false);
         }
       };
-
       fetchBuild();
     }
   }, [id, useService]);
@@ -81,7 +82,7 @@ export default function BuildDetails() {
               </Link>
 
               {/* Ícone de QR Code com botão para abrir o pop-up */}
-              <button onClick={() => setShowQrCodePopup({ visible: true, employeeId: employee.id })}>
+              <button onClick={() => setShowQrCodePopup({ visible: true, employee })}>
                 <Image
                   src={hoveredQrIconIndex === index ? "/images/codigo-qr (1).png" : "/images/codigo-qr.png"}
                   alt="Código QR"
@@ -95,6 +96,14 @@ export default function BuildDetails() {
           </div>
         ))}
       </div>
+
+      {/* Componente de Pop-up do QR Code */}
+      {showQrCodePopup && showQrCodePopup.visible && showQrCodePopup.employee && (
+        <QRCodeInfoPopup
+          employee={showQrCodePopup.employee}
+          onClose={() => setShowQrCodePopup(null)}
+        />
+      )}
     </div>
   );
 }

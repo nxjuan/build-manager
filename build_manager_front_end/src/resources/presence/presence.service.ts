@@ -40,6 +40,22 @@ class PresenceService {
         }
         return await response.json();
     }
+
+    async payAllPresencesByEmployeeId(employeeId: string): Promise<string> {
+        const response = await fetch(this.baseURL + '/payAllPresencesByEmployeeId/' + employeeId, {
+            method: 'PATCH'
+        });
+    
+        if (!response.ok) {
+            throw new Error(`Erro ao atualizar as presenças do funcionário: ${employeeId} | erro: ${response.statusText}`);
+        }
+        
+        const resposta = response.status.toString();
+        console.log(resposta)
+        // Retorna apenas o status
+        return resposta
+    }
+    
 }
 
 export const usePresenceService = () => new PresenceService();

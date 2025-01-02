@@ -8,6 +8,7 @@ export enum PresenceType {
 }
 
 export class Presence {
+    id?: string;
     date?: Date;
     start_time_work?: string;  
     end_time_work?: string;    
