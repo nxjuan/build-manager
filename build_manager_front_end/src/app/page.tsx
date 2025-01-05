@@ -8,8 +8,7 @@ export default function Home() {
       <HeaderBar />
       <div className="grid grid-cols-auto-fit md:grid-cols-4 gap-12 text-center">
         <BuildCard />
-      </div>
-      
+      </div>      
     </main>
   );
 }
