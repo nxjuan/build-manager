@@ -4,6 +4,8 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 /data
+build_manager_api/data/
+data/
 
 ### STS ###
 .apt_generated
